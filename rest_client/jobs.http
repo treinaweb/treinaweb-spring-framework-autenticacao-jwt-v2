@@ -1,0 +1,48 @@
+GET {{baseUrl}}/api/jobs
+
+###
+
+GET {{baseUrl}}/api/jobs/200
+
+###
+
+POST {{baseUrl}}/api/jobs
+Content-Type: application/json
+
+{
+    "title": "",
+    "description": "Vaga para um  desenvolvedor Java e Spring",
+    "company": "TreinaWeb",
+    "location": "S",
+    "level": "MID_LEVEL",
+    "salary": -7500,
+    "skills": []
+}
+
+###
+
+PUT {{baseUrl}}/api/jobs/4
+Content-Type: application/json
+
+{
+    "title": "Desenvolvedor Back-end Java",
+    "description": "Vaga para um desenvolvedor que saiba Java e Spring",
+    "company": "TreinaWeb",
+    "location": "São Paulo",
+    "type": "FULL_TIME",
+    "level": "SENIOR",
+    "salary": 15000.00,
+    "skills": [
+        1, 
+        2,
+        10
+    ]
+}
+
+###
+
+DELETE {{baseUrl}}/api/jobs/3
+
+###
+
+GET {{baseUrl}}/api/jobs/2/skills

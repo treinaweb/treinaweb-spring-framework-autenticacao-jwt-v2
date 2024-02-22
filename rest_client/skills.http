@@ -1,0 +1,27 @@
+GET {{baseUrl}}/api/skills?tamanho=10&pagina=2
+
+###
+
+GET {{baseUrl}}/api/skills/1
+
+###
+
+POST {{baseUrl}}/api/skills
+Content-Type: application/json
+
+{
+    "name": "PostegreSQL"
+}
+
+###
+
+PUT {{baseUrl}}/api/skills/1
+Content-Type: application/json
+
+{
+    "name": "Java"
+}
+
+###
+
+DELETE  {{baseUrl}}/api/skills/11
