@@ -1,0 +1,9 @@
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "TreinaWeb",
+    "email": "contato@treinaweb.com.br",
+    "password": "senha@123",
+    "role": "COMPANY"
+}

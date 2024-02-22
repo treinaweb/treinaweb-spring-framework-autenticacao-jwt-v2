@@ -18,6 +18,9 @@ public class SecurityConfig {
             .authorizeHttpRequests(customizer -> customizer
                 .anyRequest().permitAll()
             )
+            .csrf(customizer -> customizer
+                .disable()
+            )
             .build();
     }
     
