@@ -8,6 +8,7 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import br.com.treinaweb.twjobs.api.jobs.dtos.JobResponse;
 import br.com.treinaweb.twjobs.api.jobs.mappers.JobMapper;
 import br.com.treinaweb.twjobs.core.exceptions.JobNotFoundException;
 import br.com.treinaweb.twjobs.core.repositories.JobRepository;
+import br.com.treinaweb.twjobs.core.services.auth.AuthenticatedUser;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -55,8 +57,10 @@ public class JobRestController {
     @PostMapping
     @PreAuthorize("hasAuthority('COMPANY')")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public EntityModel<JobResponse> create(@RequestBody @Valid JobRequest jobRequest) {
+    public EntityModel<JobResponse> create(@RequestBody @Valid JobRequest jobRequest, Authentication authentication) {
         var job = jobMapper.toJob(jobRequest);
+        var authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
+        job.setCompany(authenticatedUser.getUser());
         job = jobRepository.save(job);
         var jobResponse = jobMapper.toJobResponse(job);
         return jobAssembler.toModel(jobResponse);
@@ -71,7 +75,7 @@ public class JobRestController {
         var job = jobRepository.findById(id)
             .orElseThrow(JobNotFoundException::new);
         var jobData = jobMapper.toJob(jobRequest);
-        BeanUtils.copyProperties(jobData, job, "id");
+        BeanUtils.copyProperties(jobData, job, "id", "company", "candidates");
         job = jobRepository.save(job);
         var jobResponse = jobMapper.toJobResponse(job);
         return jobAssembler.toModel(jobResponse);

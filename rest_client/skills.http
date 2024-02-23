@@ -8,10 +8,10 @@ GET {{baseUrl}}/api/skills/1
 
 POST {{baseUrl}}/api/skills
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGV5c29uQG1haWwuY29tIiwiaWF0IjoxNzA4NjU3MTk3LCJleHAiOjE3MDg2NjQzOTd9.NIFrOHED6ZnvsvrgTEOzTrSLAzy_kuZQQUhPnGFMgTJcLhUi4kDfP5H8IV6yHStuX5zrh9JN3HSBDMe8QmkZ3A
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQHRyZWluYXdlYi5jb20uYnIiLCJpYXQiOjE3MDg2NTg4MjgsImV4cCI6MTcwODY2MjQyOH0.iVEqX-fwsl4scLLHNNFLh-m_QQhW-yhOIZ9Z-F_pac1Ohe8CUNSqcpyYOUK_qZ_HDc22W8YHacHcUk8RZqMpXA
 
 {
-    "name": "Python2"
+    "name": "Spring"
 }
 
 ###

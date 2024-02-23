@@ -2,22 +2,22 @@ GET {{baseUrl}}/api/jobs
 
 ###
 
-GET {{baseUrl}}/api/jobs/200
+GET {{baseUrl}}/api/jobs/1
 
 ###
 
 POST {{baseUrl}}/api/jobs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQHRyZWluYXdlYi5jb20uYnIiLCJpYXQiOjE3MDg2NTg3OTgsImV4cCI6MTcwODY2MjM5OH0.HBKDYaFOHyICKgzgPICWOUqFPqKWhsiSqXdkwyZTReYsqDFvbR94Wm02bPteyMELmYk3Ma3ixgNl6itHgZaEMg
 
 {
-    "title": "Teste",
+    "title": "Desenvolvedor Java e Spring",
     "description": "Vaga para um  desenvolvedor Java e Spring",
-    "company": "TreinaWeb",
     "location": "São Paulo",
     "level": "MID_LEVEL",
     "salary": 7500,
     "type": "FULL_TIME",
-    "skills": [1]
+    "skills": [1, 2]
 }
 
 ###

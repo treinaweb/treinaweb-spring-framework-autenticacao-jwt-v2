@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.treinaweb.twjobs.api.jobs.dtos.JobRequest;
+import br.com.treinaweb.twjobs.api.jobs.dtos.JobResponse;
 import br.com.treinaweb.twjobs.core.models.Job;
 import br.com.treinaweb.twjobs.core.models.Skill;
 import br.com.treinaweb.twjobs.core.repositories.SkillRepository;
@@ -27,6 +28,11 @@ public class ModelMapperConfig {
             .addMappings(mapper -> mapper
                 .using(toListOfSkills())
                 .map(JobRequest::getSkills, Job::setSkills)
+            );
+
+        modelmapper.createTypeMap(Job.class, JobResponse.class)
+            .addMappings(mapper -> mapper
+                .map(src -> src.getCompany().getName(), JobResponse::setCompany)
             );
 
         return modelmapper;

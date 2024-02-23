@@ -29,10 +29,6 @@ public class JobRequest {
     private String description;
 
     @NotEmpty
-    @Size(min = 3, max = 50)
-    private String company;
-
-    @NotEmpty
     @Size(min = 3, max = 100)
     private String location;
 

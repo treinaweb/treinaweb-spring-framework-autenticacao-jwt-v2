@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,9 +43,6 @@ public class Job {
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false, length = 50)
-    private String company;
-
     @Column(nullable = false, length = 100)
     private String location;
 
@@ -61,5 +59,11 @@ public class Job {
 
     @ManyToMany
     private List<Skill> skills;
+
+    @ManyToOne(optional = false)
+    private User company;
+
+    @ManyToMany
+    private List<User> candidates;
     
 }
