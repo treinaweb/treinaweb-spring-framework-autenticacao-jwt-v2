@@ -10,13 +10,14 @@ POST {{baseUrl}}/api/jobs
 Content-Type: application/json
 
 {
-    "title": "",
+    "title": "Teste",
     "description": "Vaga para um  desenvolvedor Java e Spring",
     "company": "TreinaWeb",
-    "location": "S",
+    "location": "São Paulo",
     "level": "MID_LEVEL",
-    "salary": -7500,
-    "skills": []
+    "salary": 7500,
+    "type": "FULL_TIME",
+    "skills": [1]
 }
 
 ###

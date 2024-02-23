@@ -7,6 +7,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,6 +53,7 @@ public class JobRestController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('COMPANY')")
     @ResponseStatus(code = HttpStatus.CREATED)
     public EntityModel<JobResponse> create(@RequestBody @Valid JobRequest jobRequest) {
         var job = jobMapper.toJob(jobRequest);
@@ -61,6 +63,7 @@ public class JobRestController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('COMPANY')")
     public EntityModel<JobResponse> update(
         @RequestBody @Valid JobRequest jobRequest, 
         @PathVariable Long id
@@ -75,6 +78,7 @@ public class JobRestController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('COMPANY')")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         var job = jobRepository.findById(id)
             .orElseThrow(JobNotFoundException::new);

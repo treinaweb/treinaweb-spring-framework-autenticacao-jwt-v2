@@ -1,4 +1,4 @@
-GET {{baseUrl}}/api/skills?tamanho=10&pagina=2
+GET {{baseUrl}}/api/skills
 
 ###
 
