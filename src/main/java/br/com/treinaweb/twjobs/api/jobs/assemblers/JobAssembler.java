@@ -44,7 +44,7 @@ public class JobAssembler implements SimpleRepresentationModelAssembler<JobRespo
             .withSelfRel()
             .withType("GET");
 
-        var createLink = linkTo(methodOn(JobRestController.class).create(null, null))
+        var createLink = linkTo(methodOn(JobRestController.class).create(null))
             .withRel("create")
             .withType("POST");
 

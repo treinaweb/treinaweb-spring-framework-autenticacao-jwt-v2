@@ -7,8 +7,6 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +22,9 @@ import br.com.treinaweb.twjobs.api.jobs.dtos.JobRequest;
 import br.com.treinaweb.twjobs.api.jobs.dtos.JobResponse;
 import br.com.treinaweb.twjobs.api.jobs.mappers.JobMapper;
 import br.com.treinaweb.twjobs.core.exceptions.JobNotFoundException;
+import br.com.treinaweb.twjobs.core.permissions.TWJobsPermissions;
 import br.com.treinaweb.twjobs.core.repositories.JobRepository;
-import br.com.treinaweb.twjobs.core.services.auth.AuthenticatedUser;
+import br.com.treinaweb.twjobs.core.services.auth.SecurityService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -37,6 +36,7 @@ public class JobRestController {
     private final JobMapper jobMapper;
     private final JobAssembler jobAssembler;
     private final JobRepository jobRepository;
+    private final SecurityService securityService;
     private final PagedResourcesAssembler<JobResponse> pagedResourcesAssembler;
 
     @GetMapping
@@ -55,19 +55,18 @@ public class JobRestController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('COMPANY')")
+    @TWJobsPermissions.IsCompany
     @ResponseStatus(code = HttpStatus.CREATED)
-    public EntityModel<JobResponse> create(@RequestBody @Valid JobRequest jobRequest, Authentication authentication) {
+    public EntityModel<JobResponse> create(@RequestBody @Valid JobRequest jobRequest) {
         var job = jobMapper.toJob(jobRequest);
-        var authenticatedUser = (AuthenticatedUser) authentication.getPrincipal();
-        job.setCompany(authenticatedUser.getUser());
+        job.setCompany(securityService.getCurrentUser());
         job = jobRepository.save(job);
         var jobResponse = jobMapper.toJobResponse(job);
         return jobAssembler.toModel(jobResponse);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('COMPANY')")
+    @TWJobsPermissions.IsOwner
     public EntityModel<JobResponse> update(
         @RequestBody @Valid JobRequest jobRequest, 
         @PathVariable Long id
@@ -82,7 +81,7 @@ public class JobRestController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('COMPANY')")
+    @TWJobsPermissions.IsOwner
     public ResponseEntity<?> delete(@PathVariable Long id) {
         var job = jobRepository.findById(id)
             .orElseThrow(JobNotFoundException::new);

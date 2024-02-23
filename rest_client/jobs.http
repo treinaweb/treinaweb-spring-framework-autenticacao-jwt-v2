@@ -8,7 +8,7 @@ GET {{baseUrl}}/api/jobs/1
 
 POST {{baseUrl}}/api/jobs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQHRyZWluYXdlYi5jb20uYnIiLCJpYXQiOjE3MDg2NTg3OTgsImV4cCI6MTcwODY2MjM5OH0.HBKDYaFOHyICKgzgPICWOUqFPqKWhsiSqXdkwyZTReYsqDFvbR94Wm02bPteyMELmYk3Ma3ixgNl6itHgZaEMg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQGF2bWFrZXJzLmNvbS5iciIsImlhdCI6MTcwODY2MjM1NSwiZXhwIjoxNzA4NjY1OTU1fQ.CJ84nx92_MDuaRiZhW3cic2rqlcz247SISbB-AcakFO5T2kYVM5tU50K8u8TER3td7Y-lcH-16_W9i7kg_kwog
 
 {
     "title": "Desenvolvedor Java e Spring",
@@ -22,8 +22,9 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQHRyZWluYXdlYi5jb
 
 ###
 
-PUT {{baseUrl}}/api/jobs/4
+PUT {{baseUrl}}/api/jobs/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb250YXRvQGF2bWFrZXJzLmNvbS5iciIsImlhdCI6MTcwODY2MjM1NSwiZXhwIjoxNzA4NjY1OTU1fQ.CJ84nx92_MDuaRiZhW3cic2rqlcz247SISbB-AcakFO5T2kYVM5tU50K8u8TER3td7Y-lcH-16_W9i7kg_kwog
 
 {
     "title": "Desenvolvedor Back-end Java",
@@ -51,4 +52,4 @@ GET {{baseUrl}}/api/jobs/2/skills
 ###
 
 POST {{baseUrl}}/api/jobs/1/apply
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGV5c29uQG1haWwuY29tIiwiaWF0IjoxNzA4NjU5MjUyLCJleHAiOjE3MDg2NjI4NTJ9.lMXGypgACvn4j5ghsyo0gsTtu3SbQ6JqwFrKU0-4kBofQmntAbZ2sir_8vC1wvCLg8qbwFgDOPCDUUlpLG8SGQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGV5c29uQG1haWwuY29tIiwiaWF0IjoxNzA4NjYyNTgwLCJleHAiOjE3MDg2NjYxODB9.pcB13nFkuUy5lc_rqm8xhfTdP97oknWBhBestwiuMbEUp4diI9QNTeFMW2sHzJM4Hzu3K8IeUhoGNVgPXwk6SQ
