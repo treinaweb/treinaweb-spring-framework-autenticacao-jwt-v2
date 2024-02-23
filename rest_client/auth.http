@@ -14,6 +14,6 @@ POST {{baseUrl}}/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "contato@treinaweb.com.br",
+    "email": "cleyson@mail.com",
     "password": "senha@123"
 }
