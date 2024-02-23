@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.treinaweb.twjobs.api.auth.dtos.LoginRequest;
+import br.com.treinaweb.twjobs.api.auth.dtos.RefreshRequest;
 import br.com.treinaweb.twjobs.api.auth.dtos.TokenResponse;
 import br.com.treinaweb.twjobs.api.auth.dtos.UserRequest;
 import br.com.treinaweb.twjobs.api.auth.dtos.UserResponse;
@@ -50,6 +51,16 @@ public class AuthRestController {
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         return TokenResponse.builder()
             .accessToken(jwtService.generateAccessToken(loginRequest.getEmail()))
+            .refreshToken(jwtService.generateRefreshToken(loginRequest.getEmail()))
+            .build();
+    }
+
+    @PostMapping("/refresh")
+    public TokenResponse refresh(@RequestBody @Valid RefreshRequest refreshRequest) {
+        var sub = jwtService.getSubFromRefreshToken(refreshRequest.getRefreshToken());
+        return TokenResponse.builder()
+            .accessToken(jwtService.generateAccessToken(sub))
+            .refreshToken(jwtService.generateRefreshToken(sub))
             .build();
     }
     

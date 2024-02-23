@@ -8,5 +8,15 @@
     "name": "br.com.treinaweb.twjobs.jwt.accessExpiresIn",
     "type": "java.lang.Long",
     "description": "Tempo de expiração em segundos do token de acesso"
+  },
+  {
+    "name": "br.com.treinaweb.twjobs.jwt.refreshSecret",
+    "type": "java.lang.String",
+    "description": "Chave secreta para geração do token de atualização"
+  },
+  {
+    "name": "br.com.treinaweb.twjobs.jwt.refreshExpiresIn",
+    "type": "java.lang.Long",
+    "description": "Tempo de expiração em segundos do token de atualização"
   }
 ]}

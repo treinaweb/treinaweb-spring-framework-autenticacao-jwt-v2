@@ -8,7 +8,7 @@ GET {{baseUrl}}/api/skills/1
 
 POST {{baseUrl}}/api/skills
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGV5c29uQG1haWwuY29tIiwiaWF0IjoxNzA4NjU1NzAzLCJleHAiOjE3MDg2NTkzMDN9.WpSd_wU-H_6Mx5NTcgeS3tQQ7KN6w8S-AwmhNVEaJWn3tu9tE7Ac1A2rJiyVR8mckVj7Q-0opowIm1dOdAKTWQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjbGV5c29uQG1haWwuY29tIiwiaWF0IjoxNzA4NjU3MTk3LCJleHAiOjE3MDg2NjQzOTd9.NIFrOHED6ZnvsvrgTEOzTrSLAzy_kuZQQUhPnGFMgTJcLhUi4kDfP5H8IV6yHStuX5zrh9JN3HSBDMe8QmkZ3A
 
 {
     "name": "Python2"

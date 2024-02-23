@@ -20,9 +20,36 @@ public class JjwtJwtService implements JwtService {
 
     @Override
     public String generateAccessToken(String sub) {
+        return generateToken(
+            sub, 
+            configProperties.getAccessSecret(), 
+            configProperties.getAccessExpiresIn()
+        );
+    }
+
+    @Override
+    public String getSubFromAccessToken(String token) {
+        return getSubFromToken(token, configProperties.getAccessSecret());
+    }
+
+    @Override
+    public String generateRefreshToken(String sub) {
+        return generateToken(
+            sub, 
+            configProperties.getRefreshSecret(), 
+            configProperties.getRefreshExpiresIn()
+        );
+    }
+
+    @Override
+    public String getSubFromRefreshToken(String token) {
+        return getSubFromToken(token, configProperties.getRefreshSecret());
+    }
+
+    private String generateToken(String sub, String secret, Long expiresIn) {
         var now = Instant.now();
-        var expiration = now.plusSeconds(configProperties.getAccessExpiresIn());
-        var key = Keys.hmacShaKeyFor(configProperties.getAccessSecret().getBytes());
+        var expiration = now.plusSeconds(expiresIn);
+        var key = Keys.hmacShaKeyFor(secret.getBytes());
         return Jwts.builder()
             .subject(sub)
             .issuedAt(Date.from(now))
@@ -31,9 +58,8 @@ public class JjwtJwtService implements JwtService {
             .compact();
     }
 
-    @Override
-    public String getSubFromAccessToken(String token) {
-        var key = Keys.hmacShaKeyFor(configProperties.getAccessSecret().getBytes());
+    private String getSubFromToken(String token, String secret) {
+        var key = Keys.hmacShaKeyFor(secret.getBytes());
         try {
             return Jwts.parser()
                 .verifyWith(key)

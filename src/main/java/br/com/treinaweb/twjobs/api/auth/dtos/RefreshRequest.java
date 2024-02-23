@@ -1,5 +1,6 @@
 package br.com.treinaweb.twjobs.api.auth.dtos;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,9 +10,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TokenResponse {
+public class RefreshRequest {
 
-    private String accessToken;
+    @NotEmpty
     private String refreshToken;
     
 }

@@ -12,5 +12,7 @@ public class JwtConfigProperties {
 
     private String accessSecret;
     private Long accessExpiresIn;
+    private String refreshSecret;
+    private Long refreshExpiresIn;
     
 }
