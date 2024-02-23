@@ -7,3 +7,13 @@ Content-Type: application/json
     "password": "senha@123",
     "role": "COMPANY"
 }
+
+###
+
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "contato@treinaweb.com.br",
+    "password": "senha@123"
+}
