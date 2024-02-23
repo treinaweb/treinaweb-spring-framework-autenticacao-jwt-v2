@@ -2,10 +2,10 @@ POST {{baseUrl}}/api/auth/register
 Content-Type: application/json
 
 {
-    "name": "TreinaWeb",
-    "email": "contato@treinaweb.com.br",
+    "name": "Cleyson Lima",
+    "email": "cleyson@mail.com",
     "password": "senha@123",
-    "role": "COMPANY"
+    "role": "CANDIDATE"
 }
 
 ###
@@ -14,7 +14,7 @@ POST {{baseUrl}}/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "contato@treinaweb.com.br",
+    "email": "cleyson@mail.com",
     "password": "senha@123"
 }
 
